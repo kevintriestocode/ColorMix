@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         colorView.backgroundColor = .black
+        //“The view you see in the storyboard doesn’t change color, because the code isn’t run until the ​ app is run.”
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
