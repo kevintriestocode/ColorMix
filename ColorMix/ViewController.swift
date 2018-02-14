@@ -28,9 +28,9 @@ class ViewController: UIViewController {
     @IBAction func switchChanged(_ sender: UISwitch) {
         if sender.isOn {
             updateColor()
-        } else {
+        } /*else {
             updateColor()
-        }
+        }*/
     }
     
     @IBOutlet weak var redSwitch: UISwitch!
@@ -61,5 +61,17 @@ class ViewController: UIViewController {
     @IBAction func sliderChanged(_ sender: UISlider) {
         updateColor()
     }
+    
+    @IBAction func reset(_ sender: AnyObject) {
+        redSwitch.isOn = false
+        redSlider.value = 1
+        greenSwitch.isOn = false
+        greenSlider.value = 1
+        blueSwitch.isOn = false
+        blueSlider.value = 1
+        
+        updateColor()
+    }
+    
 }
 
