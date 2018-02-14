@@ -13,8 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateColor()
-        //“The view you see in the storyboard doesn’t change color, because the code isn’t run until the ​ app is run.”
+        sliderColors()
+        colorView.layer.borderWidth = 5
+        colorView.layer.cornerRadius = 20
+        colorView.layer.borderColor = UIColor.black.cgColor
         
+        updateControls()
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -28,9 +32,10 @@ class ViewController: UIViewController {
     @IBAction func switchChanged(_ sender: UISwitch) {
         if sender.isOn {
             updateColor()
-        } /*else {
+        } else {
             updateColor()
-        }*/
+        }
+        updateControls()
     }
     
     @IBOutlet weak var redSwitch: UISwitch!
@@ -43,12 +48,18 @@ class ViewController: UIViewController {
         var blue: CGFloat = 0
         if redSwitch.isOn {
             red = CGFloat(redSlider.value)
+        } else {
+            red = 0
         }
         if greenSwitch.isOn {
             green = CGFloat(greenSlider.value)
+        } else {
+            green = 0
         }
         if blueSwitch.isOn {
             blue = CGFloat(blueSlider.value)
+        } else {
+            blue = 0
         }
         
         let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
@@ -74,6 +85,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
+    
     @IBAction func sliderChanged(_ sender: UISlider) {
         sliderColors()
         updateColor()
@@ -89,6 +101,13 @@ class ViewController: UIViewController {
         
         updateColor()
         sliderColors()
+        updateControls()
+    }
+    
+    func updateControls() {
+        redSlider.isEnabled = redSwitch.isOn
+        greenSlider.isEnabled = greenSwitch.isOn
+        blueSlider.isEnabled = blueSwitch.isOn
     }
     
 }
