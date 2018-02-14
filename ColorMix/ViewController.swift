@@ -55,10 +55,27 @@ class ViewController: UIViewController {
         colorView.backgroundColor = color
     }
     
+    func sliderColors() {
+        //var red: CGFloat = 0
+        //var green: CGFloat = 0
+        //var blue: CGFloat = 0
+        let red = CGFloat(redSlider.value)
+        let green = CGFloat(greenSlider.value)
+        let blue = CGFloat(blueSlider.value)
+        let redSliderColor = UIColor(red: red, green: 0, blue: 0, alpha: 1)
+        let greenSliderColor = UIColor(red: 0, green: green, blue: 0, alpha: 1)
+        let blueSlidercolor = UIColor(red: 0, green: 0, blue: blue, alpha: 1)
+        redSlider.minimumTrackTintColor = redSliderColor
+        greenSlider.minimumTrackTintColor = greenSliderColor
+        blueSlider.minimumTrackTintColor = blueSlidercolor
+    }
+
+    
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     @IBAction func sliderChanged(_ sender: UISlider) {
+        sliderColors()
         updateColor()
     }
     
@@ -71,6 +88,7 @@ class ViewController: UIViewController {
         blueSlider.value = 1
         
         updateColor()
+        sliderColors()
     }
     
 }
